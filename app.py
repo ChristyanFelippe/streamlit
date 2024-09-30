@@ -2,6 +2,7 @@ import streamlit as st
 import plotly.express as px
 from dataset import df
 from utils import format_number
+from graficos import grafico_map_estado
 
 st.set_page_config(layout='wide')
 st.title("Dashboard de vendas :shopping_trolley:")
@@ -13,5 +14,6 @@ with aba2:
     coluna1, coluna2 = st.columns(2)
     with coluna1:
         st.metric('Receita Total', format_number(df['Preço'].sum(), 'R$'))
+        st.plotly_chart(grafico_map_estado, use_container_width=True)
     with coluna2:
         st.metric('Quantidade de Vendas', format_number(df.shape[0], 'R$'))
